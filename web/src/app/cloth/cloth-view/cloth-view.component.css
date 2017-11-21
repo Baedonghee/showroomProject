@@ -1,0 +1,56 @@
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+ul.clothalign {
+    list-style:none;
+    padding-left:13px;
+    padding-right:13px;
+}
+li.clothalignli{
+    padding-right:0px;
+
+}
+ul.clothsizeui{
+   list-style:none;
+   padding-left:0px;
+}
+li.clothsize {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+    padding-left: 0.3em;
+}
+li.clothsizenopadding {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+    
+}
+img.asd {
+	margin-left: auto; 
+	margin-right: auto;
+	display:block;
+	max-width:100%;
+	height:13.4em;
+	
+}
+.glyphicon glyphicon-plus-sign {
+	font-size: 300px;
+}
+
+a.sizeof {
+	word-break:break-all;
+}
+.imgsize {
+    margin-top: 0.9em;
+    width:160px;
+    height:160px;
+}

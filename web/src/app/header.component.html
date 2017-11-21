@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['']">ShowRoom</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a role="button" [routerLink]="['/cloth']">Cloth</a> </li>
+        <li routerLinkActive="active"><a role="button" [routerLink]="['/cody']">Cody</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!isAuth()">
+        <li routerLinkActive="active"><a role="button" [routerLink]="['/user']">SignIn</a>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right" *ngIf="isAuth()">
+        <li class="dropdown">
+          <a  
+             data-toggle="dropdown"
+             class="dropdown-toggle" 
+             role="button" 
+             aria-haspopup="true" 
+             aria-expanded="false"
+             aria-labelledby="dropdownMenu3">{{showName}}<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a [routerLink]="['/user/edit']"(click)="onEdit()" style="cursor: pointer">Edit</a></li>
+            <li><a [routerLink]="['']" (click)="onLogout()" style="cursor: pointer">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

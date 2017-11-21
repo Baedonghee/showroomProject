@@ -1,0 +1,159 @@
+/* image thumbnail */
+.thumb {
+    display: block;
+	width: 30em;
+	height: 30em;
+	margin: 0;
+}
+.cloththumb {
+	width: 150px;
+	height: 150px;
+
+}
+/* Style to article Author */
+.by-author {
+	font-style: italic;
+	line-height: 1.3;
+	color: #aab6aa;
+}
+.inputdiv{
+	padding-right: 5em;
+}
+
+/* Main Article [Module]
+-------------------------------------
+* Featured Article Thumbnail
+* have a image and a text title.
+*/
+.featured-article {
+	width: 30em;
+	height: 30em;
+	position: relative;
+	margin-bottom: 1em;
+}
+
+.featured-article .block-title {
+	/* Position & Box Model */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	/* background */
+	background: rgba(0,0,0,0.7);
+	/* Width/Height */
+	padding: .5em;
+	width: 100%;
+	/* Text color */
+	color: #fff;
+}
+
+.featured-article .block-title h2 {
+	margin: 0;
+}
+
+/* Featured Articles List [BS3]
+--------------------------------------------
+* show the last 3 articles post
+*/
+
+.main-list {
+	padding-left: .5em;
+}
+
+.main-list .media {
+	padding-bottom: 1.1em;
+	border-bottom: 1px solid #e8e8e8;
+}
+.center{
+width: 150px;
+  margin-top: 2em;
+  
+}
+.tag-input{
+	margin-top: 2em;
+}
+.codyweather{
+	margin-top: 2em;
+	width: 600px; 
+	margin-bottom: 20px;
+}
+.codyschedule{
+	margin-top: 2em;
+	width: 600px; 
+	margin-bottom: 20px;
+}
+.ngselect{
+	width:400px;
+}
+.imgsize {
+	width:9.5em;
+	height:9.5em;
+	
+}
+li.asd {
+	float: left;
+	margin-bottom: 1em;
+	margin-top:1em;
+}
+ul {
+   list-style:none;
+   padding-left:0px;
+}
+.centeralign {
+	float: left;     
+	width: 100%;     
+	padding-right: 20px;     
+	padding-left: 25px;     
+	margin: 0 auto;     
+	text-align: center;
+}
+.centeralign ul {
+	padding-top: 10px;
+	list-style: none;
+}
+.centeralign ul li {
+	padding-bottom: 3px;
+	display: inline-block;
+	padding-right: 10px;
+}
+.searchbutton {
+	float: right;
+	margin-bottom: 1em;
+	margin-right: 1em;
+}
+.searchbar {
+	border: 2px solid #e74c3c;
+    border-radius: 3px;
+}
+.center {
+    text-align: center;
+}
+.centermain{
+	display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+.pagination {
+    
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+.has-text-centered {
+	margin-left: 15em;
+}

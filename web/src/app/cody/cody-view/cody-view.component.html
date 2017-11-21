@@ -1,0 +1,62 @@
+<!-- <button type="button" class="btn btn-default"><h1><span class="glyphicon glyphicon-plus">Add</span></h1></button> -->
+<button class="add-to-cart btn btn-default" type="button" [routerLink]="['/cody/add']">ADD</button>
+<div class="container">
+		<div class="card" *ngFor="let cody of codyArray; let i = index">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-5">
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img [src]="cody.codyPhoto" class="codyimage"/></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li *ngFor="let clothPhoto of cody.clothPhoto"><a  data-toggle="tab" ><img [src]="clothPhoto" /></a></li>
+						</ul>
+					</div>
+					<div class="details col-md-6">
+						<h4 class="sizes">
+							<ul class="tagul">
+								<li class ="sizetag" *ngFor = "let codyTag of cody.codyTag">#{{codyTag}}&nbsp;&nbsp;</li>
+							</ul>
+						</h4>
+						
+						<div class="rating">
+							<span class="review-no">Degree : {{cody.codyDegree}}</span>
+						</div>
+						<h4 class="sizes">Weather :
+							<span class="sizeWeather" data-toggle="tooltip">화창한</span>
+							<span class="sizeWeather" data-toggle="tooltip" title="medium">햇빛쨍쨍</span>
+						</h4>
+						<h4 class="sizes">ScheduleContent :
+							<span class="sizeSchedule" data-toggle="tooltip" title="small">데이트할때</span>
+							<br>
+							<span class="sizeSchedule" data-toggle="tooltip" title="medium">벚꽃보러 가는 날</span>
+							<br>
+							<span class="sizeSchedule" data-toggle="tooltip" title="large">소개팅할때 </span>
+						</h4>
+						<h4 class="sizes">
+							<ul>
+								<li class="clothsizenopadding">Cloth :</li>
+								<li class="clothsize" *ngFor="let clothName of cody.clothName">{{clothName}}</li>
+							</ul>
+							<!-- <span class="size" data-toggle="tooltip" title="small">스타일 리시한 워싱데님</span>
+							<br>
+							<span class="size" data-toggle="tooltip" title="medium">따뜻하면서 이쁜 점퍼</span>
+							<br>
+							<span class="size" data-toggle="tooltip" title="large">누구나 하나쯤은 가지고 있어야할 맨투맨</span> -->
+						</h4>
+						<h4 class="sizes">
+							<ul>
+								<li class="clothsizenopadding">CodyPrice :</li>
+								<li class="clothsize">{{cody.codyPrice}}원</li>
+							</ul>
+
+						</h4>
+						<div class="action">
+							<button class="edit-to-cart btn btn-default" type="button" (click)="onClickEdit(cody)">Edit</button>
+							<button class="delete-to-cart btn btn-default" type="button" (click)="onClickDelete(cody._id,i)">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		

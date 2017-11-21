@@ -8,7 +8,7 @@ const dbModel = require('./utils/dbOverlap');
 const request = require('request-promise');
 const version=1;
 const stnid=108;
-const Appkey="&appKey=453cc47b-b855-3aa7-af60-ae779b6e8481&format=json";
+const Appkey="";
 const todayBestUserCodytime = '00 04 12 * * 0-6';
 const deleteBoardtime = '30 24 16 * * 0-6';
 const deleteSelectBoardtime = '00 24 16 * * 0-6';

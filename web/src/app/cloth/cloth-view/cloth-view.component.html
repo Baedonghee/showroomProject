@@ -1,0 +1,202 @@
+<div class="container" (ngModelChange)="onChange()">
+    <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" (click)="loadCloth()">All</a></li>
+    <li><a data-toggle="tab" (click)="onClickOuter()">Outer</a></li>
+    <li><a data-toggle="tab" (click)="onClickTop()">Top</a></li>
+    <li><a data-toggle="tab" (click)="onClickBottom()">Bottom</a></li>
+    <li><a data-toggle="tab" (click)="onClickSuit()">Suit</a></li>
+    <li><a data-toggle="tab" (click)="onClickSummer()">Summer</a></li>
+    <li><a data-toggle="tab" (click)="onClickShoes()">Shoes</a></li>
+    <li><a data-toggle="tab" (click)="onClickBag()">Bag</a></li>
+    <li><a data-toggle="tab" (click)="onClickAcc()">Acc</a></li>
+    </ul>
+    <br />
+    <div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <img [src]="url" [routerLink]="['/cloth/add']" alt="" type="button" class="asd"/>
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        <ul class="clothalign">
+          <li *ngFor="let cloth of clothArray | paginate: { itemsPerPage: 9, currentPage: p }" class="clothalignli">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img [src]="cloth.clothPhoto" alt="" class="imgsize"/>
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            옷 이름 : {{cloth.clothName}}</h4>
+                        <h5>카테고리 : {{cloth.categoryCode1}}</h5> 
+                       
+                        <p>
+                            가격 : {{cloth.clothPrice}}원
+                            <br />
+                            옷 주소 : <a class="sizeof" target="_blank" href="{{cloth.clothUrl}}">{{cloth.clothUrl}}</a>
+                        </p>
+                            <ul class="clothsizeui">    
+                                <li class="clothsizenopadding">옷 사이즈 :</li>
+                                <li *ngFor="let clothSize of cloth.size" class="clothsize">{{clothSize.value}}</li>
+                            </ul>
+                        <br />
+                        <br />
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Menu</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Menu</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                               <!--  <li><a [routerLink]="['/cloth/edit',cloth]">Edit</a></li> -->
+                                <li><a (click)="onClickEdit(cloth)">Edit</a></li>
+                                <li><a (click)="onClickDelete(cloth.clothNumber)">Delete</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Detail</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          </li>
+        </ul>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-4"></div>
+          <div class="col-xs-6 col-sm-4"><pagination-controls (pageChange)="p = $event" class="paginationcenter" ></pagination-controls></div>
+          <div class="col-xs-6 col-sm-4"></div>
+        </div>
+        
+        
+    
+        <!-- <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            Bhaumik Patel</h4>
+                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        Split button
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    
+    <!-- <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            Bhaumik Patel</h4>
+                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        Split button
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            Bhaumik Patel</h4>
+                        <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href="http://www.jquery2dotnet.com">www.jquery2dotnet.com</a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988</p>
+                        Split button
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">
+                                Social</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span><span class="sr-only">Social</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Github</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+          <!-- <div class="col-md-8">
+
+            <input class="btn btn-primary" value="Save Changes" type="button" [routerLink]="['/cloth/add']">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div> -->
+          
+</div>

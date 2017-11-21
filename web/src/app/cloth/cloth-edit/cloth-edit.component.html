@@ -1,0 +1,252 @@
+<div class="container">
+  <h1 class="page-header">Edit Cloth</h1>
+  <div class="row">
+
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="{{url}}"   class="img-rounded img-responsive" alt="avatar">
+        <h6>주의!! 402X402 지켜주세요</h6>
+        <input   type="file" accept="image/*" class="text-center center-block well well-sm" (change)="readUrl($event)">
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <h3>Cloth info</h3>
+      <form [formGroup]="myForm" (ngSubmit)="onClothedit()" class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Category</label>
+          <div class="col-xs-5 selectContainer">
+            <select formControlName="bigcategory" [(ngModel)]="bigSelectedCategory" (ngModelChange)="onChange($event)" class="form-control" name="size">
+              <option *ngFor="let c of bigCategorys" [ngValue]="c" > {{c.bigcategory}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"  *ngIf="!(isCheckBox()=='Choose a category')">
+          <label class="col-lg-3 control-label">MidCategory</label>
+          <div class="col-xs-5 selectContainer">
+            <select formControlName="midcategory" required  [(ngModel)]="midSelectedCategory"  class="form-control" name="size" (ngModelChange)="onMidChange($event)">
+              <option *ngFor="let c of midCategorys"  [ngValue]="c" > {{c.midcategory}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"  *ngIf="smallSelectedCategory!=undefined">
+          <label class="col-lg-3 control-label">SmallCategory</label>
+          <div class="col-xs-5 selectContainer">
+            <select formControlName="smallcategory" required [(ngModel)]="smallSelectedCategory" (ngModelChange)="onSmallChange($event)" class="form-control" name="size">
+              <option *ngFor="let c of smallCategorys" [ngValue]="c"> {{c.smallcategory}}</option>
+            </select>
+          </div>
+        </div>
+        
+
+        <div class="form-group" >
+          <label class="col-lg-3 control-label">Clothname:</label>
+          <div class="col-lg-8">
+            <input formControlName="clothname" class="form-control" type="text" [(ngModel)]="clothName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Price(원):</label>
+          <div class="col-lg-8">
+            <input formControlName="Price" class="form-control"  type="number" ng-pattern="[0-9]" ng-maxLength="16" ng-max="99999999" [(ngModel)]="price">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Cloth url:</label>
+          <div class="col-md-8">
+            <input formControlName="clothurl" class="form-control"  type="text" [(ngModel)]="clothurl">
+          </div>
+        </div>
+
+        <div class="form-group" formGroupName="size1" *ngIf="(isCheckBox()=='Outer')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of clothsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size1.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size2" *ngIf="(isCheckBox()=='Top')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of clothsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size2.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size3" *ngIf="(isCheckBox()=='Bottom')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of clothsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size3.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size4" *ngIf="(isCheckBox()=='Suit')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of clothsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size4.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size5" *ngIf="(isCheckBox()=='Summer')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of clothsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size5.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size6" *ngIf="(isCheckBox()=='Bag')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of bagaccsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size6.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size7" *ngIf="(isCheckBox()=='Acc')">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-primary" *ngFor="let size of bagaccsize">
+            <input type="checkbox"  [formControlName]="size.value" [class.invalid]="!myForm.controls.size7.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formGroupName="size8" *ngIf="isCheckBox()=='Shoes'">
+        <label class="col-md-3 control-label">Size:</label>
+        <div class="col-md-8">
+          <div class="checkbox checkbox-info" *ngFor="let size of shoessize">
+            <input type="checkbox"   [formControlName]="size.value" [class.invalid]="!myForm.controls.size8.valid">
+            <label>{{size.value}}</label>
+            </div>
+          </div>
+        </div>
+        
+
+
+          <!-- <div class="form-group" *ngIf="isCheckBox()=='Shoes'">
+            <label class="col-md-3 control-label">Cloth Size:</label>
+            <div class="col-md-8">
+             <div class="checkbox checkbox-primary">
+              <input formControlName="checkbox1" id="checkbox2" class="styled" type="checkbox">
+              <label for="checkbox2">
+                260
+              </label>
+            </div>
+            <div class="checkbox checkbox-success">
+              <input formControlName="checkbox2" id="checkbox3" class="styled" type="checkbox">
+              <label for="checkbox3">
+                265
+              </label>
+            </div>
+            <div class="checkbox checkbox-info">
+              <input formControlName="checkbox3" id="checkbox4" class="styled" type="checkbox">
+              <label for="checkbox4">
+                270
+              </label>
+            </div>
+            <div class="checkbox checkbox-warning">
+              <input formControlName="checkbox4" id="checkbox5" type="checkbox" class="styled">
+              <label for="checkbox5">
+                275
+              </label>
+            </div>
+            <div class="checkbox checkbox-danger">
+              <input formControlName="checkbox5" id="checkbox6" type="checkbox" class="styled">
+              <label for="checkbox6">
+                280
+              </label>
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group" *ngIf="isCheckBox()=='Bottom'">
+            <label class="col-md-3 control-label">Cloth Size:</label>
+            <div class="col-md-8">
+             <div class="checkbox checkbox-primary">
+              <input id="checkbox2" class="styled" type="checkbox">
+              <label for="checkbox2">
+                28
+              </label>
+            </div>
+            <div class="checkbox checkbox-success">
+              <input id="checkbox3" class="styled" type="checkbox">
+              <label for="checkbox3">
+                29
+              </label>
+            </div>
+            <div class="checkbox checkbox-info">
+              <input id="checkbox4" class="styled" type="checkbox">
+              <label for="checkbox4">
+                30
+              </label>
+            </div>
+            <div class="checkbox checkbox-warning">
+              <input id="checkbox5" type="checkbox" class="styled">
+              <label for="checkbox5">
+                31
+              </label>
+            </div>
+            <div class="checkbox checkbox-danger">
+              <input id="checkbox6" type="checkbox" class="styled">
+              <label for="checkbox6">
+                32
+              </label>
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group" *ngIf="(isCheckBox()=='Top' || isCheckBox()=='Outer')">
+            <label class="col-md-3 control-label">Cloth Size:</label>
+            <div class="col-md-8">
+             <div class="checkbox checkbox-primary">
+              <input formControlName="checkbox1" id="checkbox2" class="styled" type="checkbox">
+              <label for="checkbox2">
+                90
+              </label>
+            </div>
+            <div class="checkbox checkbox-success">
+              <input formControlName="checkbox2" id="checkbox3" class="styled" type="checkbox">
+              <label for="checkbox3">
+                95
+              </label>
+            </div>
+            <div class="checkbox checkbox-info">
+              <input formControlName="checkbox3" id="checkbox4" class="styled" type="checkbox">
+              <label for="checkbox4">
+                100
+              </label>
+            </div>
+            <div class="checkbox checkbox-warning">
+              <input formControlName="checkbox4" id="checkbox5" type="checkbox" class="styled">
+              <label for="checkbox5">
+                105
+              </label>
+            </div>
+            
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <button class="btn btn-primary" >Save</button>
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>  
+    </div>
+
+  </div>
+</div>
